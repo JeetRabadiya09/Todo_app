@@ -29,12 +29,13 @@ class _SplashScreenState extends State<SplashScreen>
     // TODO: implement initState
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.push(
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeScreen(),
-          ));
+            builder: (context) => const HomeScreen(),
+          ),
+          (route) => false);
     });
   }
 
@@ -44,13 +45,14 @@ class _SplashScreenState extends State<SplashScreen>
 
   fadeInAnimation() {
     controller = AnimationController(
-        duration: Duration(milliseconds: 1500), vsync: this);
+        duration: const Duration(milliseconds: 1500), vsync: this);
     animation = CurvedAnimation(parent: controller!, curve: Curves.easeIn);
-    Future.delayed(Duration(milliseconds: 400), () => controller!.forward());
+    Future.delayed(
+        const Duration(milliseconds: 400), () => controller!.forward());
   }
 
   iconAnimation() =>
-      Future.delayed(Duration(milliseconds: 100), () => isAnimate = true);
+      Future.delayed(const Duration(milliseconds: 100), () => isAnimate = true);
 
   @override
   Widget build(BuildContext context) {

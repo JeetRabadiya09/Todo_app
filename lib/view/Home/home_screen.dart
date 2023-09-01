@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/model/to_do_model.dart';
 import 'package:todo_app/view/Home/add_todo.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,10 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: EdgeInsets.all(screenWidth / 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: Container(
+            ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox(height: 15),
+              itemCount: 2,
+              itemBuilder: (context, index) => Container(
                 width: double.infinity,
                 height: screenHeight / 4.3,
                 decoration: BoxDecoration(
@@ -48,7 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       const Text(
-                        "To - Do App",
+                        ToDoModelData[index].title!,
+                        // "To - Do App",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -77,21 +82,46 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.black,
                                 fontSize: 15),
                           ),
-                          PopupMenuButton(
-                            // iconSize: 10,
-                            itemBuilder: (context) => [
-                              PopupMenuItem(
-                                onTap: () {},
-                                value: 1,
-                                child: const Text("edit"),
-                              ),
-                              PopupMenuItem(
-                                onTap: () {},
-                                value: 2,
-                                child: const Text("Delete"),
-                              ),
-                            ],
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => AddEditToDoView(index: index),
+                              //   ),
+                              // ).then((value) {
+                              //   setState(() {});
+                              // });
+                            },
+                            color: Colors.blue,
+                            icon: const Icon(CupertinoIcons.pen),
                           ),
+                          IconButton(
+                            onPressed: () {
+                              // setState(() {
+                              //   Constant.toDoModelList.removeAt(index);
+                              // });
+                            },
+                            color: Colors.red,
+                            icon: const Icon(CupertinoIcons.delete),
+                          ),
+
+                          // PopupMenuButton(
+                          //   // iconSize: 10,
+                          //   itemBuilder: (context) => [
+                          //     PopupMenuItem(
+                          //       onTap: () {},
+                          //       value: 1,
+                          //       child: const Text("edit"),
+                          //     ),
+                          //     PopupMenuItem(
+                          //       onTap: () {},
+                          //       value: 2,
+                          //       child: const Text("Delete"),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ],
