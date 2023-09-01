@@ -1,3 +1,5 @@
+import '../../model/to_do_model.dart';
+
 class Constant {
-  static List<ToDoModel> toDoModelList = [];
+  static List<ToDoModelData> toDoModelList = [];
 }

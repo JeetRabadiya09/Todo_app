@@ -1,14 +1,17 @@
 class ToDoModelData {
   String? title;
-  String? data;
+  String? content;
+  String? time;
 
   ToDoModelData({
     this.title,
-    this.data,
+    this.content,
+    this.time,
   });
 
   ToDoModelData.fromJson(Map<String, dynamic> json) {
     title = json['title'];
-    data = json['data'];
+    content = json['content'];
+    time = json['time'];
   }
 }
