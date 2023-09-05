@@ -14,4 +14,9 @@ class ToDoModelData {
     content = json['content'];
     time = json['time'];
   }
+  ToDoModelData.tojson(Map<String, dynamic> json) {
+    title = json['title'];
+    content = json['content'];
+    time = json['time'];
+  }
 }
