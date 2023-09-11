@@ -97,7 +97,7 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
               ),
               onTap: () {},
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
